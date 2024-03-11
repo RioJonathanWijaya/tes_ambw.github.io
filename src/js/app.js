@@ -23,16 +23,16 @@ window.addEventListener('beforeinstallprompt', function(event) {
   return false;
 });
 
-$('#installButton').addEventListener("click", async () => {
-  if (!installPrompt) {
+function download(){
+  if (!deferredPrompt) {
     return;
   }
-  const result = await installPrompt.prompt();
+  const result = deferredPrompt.prompt();
   console.log(`Install prompt was: ${result.outcome}`);
-  disableInAppInstallPrompt();
-});
+  disableInAppdeferredPrompt();
+};
 
-function disableInAppInstallPrompt() {
-  installPrompt = null;
+function disableInAppdeferredPrompt() {
+  deferredPrompt = null;
   installButton.setAttribute("hidden", "");
 };
